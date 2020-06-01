@@ -7,11 +7,12 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.databinding.DataBindingUtil
-import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProviders
 import androidx.navigation.findNavController
-import androidx.navigation.ui.NavigationUI
 import com.sukhralia.sampleapparchitectureui.databinding.FragmentFirstBinding
+import com.sukhralia.sampleapparchitectureui.utils.MyTimer
+import com.sukhralia.sampleapparchitectureui.viewmodels.MyViewModel
+import com.sukhralia.sampleapparchitectureui.viewmodels.MyViewModelFactory
 
 // TODO: Rename parameter arguments, choose names that match
 // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
@@ -46,14 +47,18 @@ class FirstFragment : Fragment() {
         // Inflate the layout for this fragment
         val binding = DataBindingUtil.inflate<FragmentFirstBinding>(inflater,R.layout.fragment_first,container,false)
 
-        myViewModelFactory = MyViewModelFactory(15)
+        myViewModelFactory =
+            MyViewModelFactory(
+                15
+            )
         Log.i("myTag","Initialize view model")
         myViewModel = ViewModelProviders.of(this,myViewModelFactory).get(MyViewModel::class.java)
 
         binding.myViewModel = myViewModel
         binding.lifecycleOwner = this
 
-        val myTimer = MyTimer(this.lifecycle)
+        val myTimer =
+            MyTimer(this.lifecycle)
         myTimer.startTimer()
 
 //        myViewModel.currentTime.observe(this, Observer { currentTime->
@@ -65,10 +70,10 @@ class FirstFragment : Fragment() {
 //        })
 
 
-//        binding.hello.setOnClickListener {
-////            view!!.findNavController().navigate(FirstFragmentDirections.actionFirstFragmentToSecondFragment())
-//            myViewModel.addScore()
-//        }
+        binding.next.setOnClickListener {
+            view!!.findNavController().navigate(FirstFragmentDirections.actionFirstFragmentToSecondFragment())
+            myViewModel.addScore()
+        }
         return binding.root
     }
 

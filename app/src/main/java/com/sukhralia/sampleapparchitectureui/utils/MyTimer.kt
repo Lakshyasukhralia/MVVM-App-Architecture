@@ -1,4 +1,4 @@
-package com.sukhralia.sampleapparchitectureui
+package com.sukhralia.sampleapparchitectureui.utils
 
 import android.os.Handler
 import android.util.Log

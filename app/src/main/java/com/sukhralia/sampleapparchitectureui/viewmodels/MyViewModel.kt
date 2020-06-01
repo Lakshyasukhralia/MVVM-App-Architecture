@@ -1,4 +1,4 @@
-package com.sukhralia.sampleapparchitectureui
+package com.sukhralia.sampleapparchitectureui.viewmodels
 
 import android.os.CountDownTimer
 import android.text.format.DateUtils
@@ -34,7 +34,10 @@ class MyViewModel(startScore : Int) : ViewModel(){
         Log.i("myTag","View model created!")
         _score.value = startScore
 
-        timer = object : CountDownTimer(END, INTERVAL){
+        timer = object : CountDownTimer(
+            END,
+            INTERVAL
+        ){
             override fun onFinish() {
                 _currentTime.value = "Game Over"
             }
