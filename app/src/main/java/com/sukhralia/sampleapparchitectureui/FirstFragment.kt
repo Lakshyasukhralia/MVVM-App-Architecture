@@ -53,6 +53,9 @@ class FirstFragment : Fragment() {
         binding.myViewModel = myViewModel
         binding.lifecycleOwner = this
 
+        val myTimer = MyTimer(this.lifecycle)
+        myTimer.startTimer()
+
 //        myViewModel.currentTime.observe(this, Observer { currentTime->
 //            binding.timer.text = currentTime
 //        })
