@@ -5,6 +5,7 @@ import android.text.format.DateUtils
 import android.util.Log
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
+import androidx.lifecycle.Transformations
 import androidx.lifecycle.ViewModel
 
 class MyViewModel(startScore : Int) : ViewModel(){
@@ -15,7 +16,7 @@ class MyViewModel(startScore : Int) : ViewModel(){
         private const val END = 10000L
     }
 
-    private lateinit var timer : CountDownTimer
+    private var timer : CountDownTimer
 
     private var _score = MutableLiveData<Int>()
     val score : LiveData<Int>
@@ -24,6 +25,10 @@ class MyViewModel(startScore : Int) : ViewModel(){
     private var _currentTime = MutableLiveData<String>()
     val currentTime : LiveData<String>
         get() = _currentTime
+
+    val scoreString = Transformations.map(score,{newScore ->
+        newScore.toString()
+    })
 
     init {
         Log.i("myTag","View model created!")

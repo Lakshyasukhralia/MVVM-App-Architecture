@@ -50,19 +50,22 @@ class FirstFragment : Fragment() {
         Log.i("myTag","Initialize view model")
         myViewModel = ViewModelProviders.of(this,myViewModelFactory).get(MyViewModel::class.java)
 
-        myViewModel.currentTime.observe(this, Observer { currentTime->
-            binding.timer.text = currentTime
-        })
+        binding.myViewModel = myViewModel
+        binding.lifecycleOwner = this
 
-        myViewModel.score.observe(this, Observer { newScore->
-            binding.hello.text = newScore.toString()
-        })
+//        myViewModel.currentTime.observe(this, Observer { currentTime->
+//            binding.timer.text = currentTime
+//        })
+//
+//        myViewModel.score.observe(this, Observer { newScore->
+//            binding.hello.text = newScore.toString()
+//        })
 
 
-        binding.hello.setOnClickListener {
-//            view!!.findNavController().navigate(FirstFragmentDirections.actionFirstFragmentToSecondFragment())
-            myViewModel.addScore()
-        }
+//        binding.hello.setOnClickListener {
+////            view!!.findNavController().navigate(FirstFragmentDirections.actionFirstFragmentToSecondFragment())
+//            myViewModel.addScore()
+//        }
         return binding.root
     }
 
