@@ -1,10 +1,20 @@
 package com.sukhralia.sampleapparchitectureui
 
 import android.os.Bundle
+import android.util.Log
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.databinding.DataBindingUtil
+import androidx.lifecycle.ViewModelProviders
+import com.sukhralia.sampleapparchitectureui.database.Person
+import com.sukhralia.sampleapparchitectureui.database.PersonDatabase
+import com.sukhralia.sampleapparchitectureui.databinding.FragmentSecondBinding
+import com.sukhralia.sampleapparchitectureui.viewmodels.MyViewModel
+import com.sukhralia.sampleapparchitectureui.viewmodels.MyViewModelFactory
+import com.sukhralia.sampleapparchitectureui.viewmodels.PersonViewModel
+import com.sukhralia.sampleapparchitectureui.viewmodels.PersonViewModelFactory
 
 // TODO: Rename parameter arguments, choose names that match
 // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
@@ -21,6 +31,9 @@ class SecondFragment : Fragment() {
     private var param1: String? = null
     private var param2: String? = null
 
+    private lateinit var binding: FragmentSecondBinding
+    private lateinit var personViewModel: PersonViewModel
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         arguments?.let {
@@ -34,7 +47,32 @@ class SecondFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View? {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_second, container, false)
+        binding = DataBindingUtil.inflate(inflater,R.layout.fragment_second,container,false)
+
+        val application = requireNotNull(this.activity).application
+
+        val dataSource = PersonDatabase.getInstance(application).personDatabaseDao
+
+        val personViewModelFactory =
+            PersonViewModelFactory(
+                dataSource,application
+            )
+        Log.i("myTag","Initialized person view model")
+        personViewModel = ViewModelProviders.of(this,personViewModelFactory).get(PersonViewModel::class.java)
+
+        binding.personViewModel = personViewModel
+        binding.lifecycleOwner = this
+
+        binding.insert.setOnClickListener{
+
+            var name = binding.name.text.toString()
+            var age = binding.age.text.toString()
+
+            if(name.isNotEmpty() && age.isNotEmpty())
+            personViewModel.insertAndRetrieve(name,age.toInt())
+        }
+
+        return binding.root
     }
 
     companion object {

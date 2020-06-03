@@ -72,7 +72,6 @@ class FirstFragment : Fragment() {
 
         binding.next.setOnClickListener {
             view!!.findNavController().navigate(FirstFragmentDirections.actionFirstFragmentToSecondFragment())
-            myViewModel.addScore()
         }
         return binding.root
     }
