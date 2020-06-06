@@ -20,7 +20,7 @@ class PersonViewModel(val database : PersonDatabaseDao, application: Application
 
     private val uiScope = CoroutineScope(Dispatchers.Main +  personViewModelJob)
     var recentPerson = MutableLiveData<Person?>()
-    private val persons = database.getAllPerson()
+    val persons = database.getAllPerson()
 
     val personsString = Transformations.map(persons) { persons ->
         getPersonNameFromLiveData(persons)
