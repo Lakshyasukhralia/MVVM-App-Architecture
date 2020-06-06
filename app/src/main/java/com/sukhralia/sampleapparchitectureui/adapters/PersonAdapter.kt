@@ -28,11 +28,13 @@ class PersonAdapter : RecyclerView.Adapter<ViewHolder>() {
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
         holder.name.text = data[position].name
+        holder.age.text = data[position].age.toString()
     }
 }
 
 class ViewHolder(itemView : View) : RecyclerView.ViewHolder(itemView){
 
     val name : TextView = itemView.findViewById(R.id.name)
+    val age : TextView = itemView.findViewById(R.id.age)
 
 }

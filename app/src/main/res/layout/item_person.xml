@@ -7,12 +7,26 @@
 
     <TextView
         android:id="@+id/name"
+        style="@style/SampleStyle1"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        tools:text="Name"
+        android:padding="5dp"
+        app:layout_constraintEnd_toStartOf="@+id/age"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:text="Name" />
+
+    <TextView
+        android:id="@+id/age"
         style="@style/SampleStyle1"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:gravity="right"
         android:padding="5dp"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toEndOf="@+id/name"
+        app:layout_constraintTop_toTopOf="@+id/name"
+        tools:text="Age" />
 </androidx.constraintlayout.widget.ConstraintLayout>
