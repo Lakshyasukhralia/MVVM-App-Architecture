@@ -3,9 +3,9 @@ package com.sukhralia.sampleapparchitectureui
 import androidx.room.Room
 import androidx.test.ext.junit.runners.AndroidJUnit4
 import androidx.test.platform.app.InstrumentationRegistry
-import com.sukhralia.sampleapparchitectureui.database.Person
-import com.sukhralia.sampleapparchitectureui.database.PersonDatabase
-import com.sukhralia.sampleapparchitectureui.database.PersonDatabaseDao
+import com.sukhralia.sampleapparchitectureui.person.database.Person
+import com.sukhralia.sampleapparchitectureui.person.database.PersonDatabase
+import com.sukhralia.sampleapparchitectureui.person.database.PersonDatabaseDao
 import junit.framework.Assert.assertEquals
 import org.junit.After
 import org.junit.Before

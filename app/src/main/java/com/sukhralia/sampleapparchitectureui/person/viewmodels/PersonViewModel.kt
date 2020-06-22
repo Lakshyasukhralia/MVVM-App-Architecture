@@ -1,11 +1,11 @@
-package com.sukhralia.sampleapparchitectureui.viewmodels
+package com.sukhralia.sampleapparchitectureui.person.viewmodels
 
 import android.app.Application
 import androidx.lifecycle.AndroidViewModel
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.Transformations
-import com.sukhralia.sampleapparchitectureui.database.Person
-import com.sukhralia.sampleapparchitectureui.database.PersonDatabaseDao
+import com.sukhralia.sampleapparchitectureui.person.database.Person
+import com.sukhralia.sampleapparchitectureui.person.database.PersonDatabaseDao
 import com.sukhralia.sampleapparchitectureui.utils.getPersonNameFromLiveData
 import kotlinx.coroutines.*
 

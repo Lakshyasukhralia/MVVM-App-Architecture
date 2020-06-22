@@ -1,18 +1,18 @@
-package com.sukhralia.sampleapparchitectureui
+package com.sukhralia.sampleapparchitectureui.mars
 
 import android.os.Bundle
-import android.util.Log
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.databinding.DataBindingUtil
 import androidx.lifecycle.ViewModelProviders
-import androidx.navigation.findNavController
-import com.sukhralia.sampleapparchitectureui.databinding.FragmentFirstBinding
-import com.sukhralia.sampleapparchitectureui.utils.MyTimer
-import com.sukhralia.sampleapparchitectureui.viewmodels.MyViewModel
-import com.sukhralia.sampleapparchitectureui.viewmodels.MyViewModelFactory
+import com.sukhralia.sampleapparchitectureui.R
+import com.sukhralia.sampleapparchitectureui.databinding.FragmentOverviewBinding
+import com.sukhralia.sampleapparchitectureui.mars.network.MarsApi
+import com.sukhralia.sampleapparchitectureui.mars.network.MarsApiService
+import com.sukhralia.sampleapparchitectureui.mars.viewmodels.OverviewViewModel
+import com.sukhralia.sampleapparchitectureui.person.viewmodels.MyViewModel
 
 // TODO: Rename parameter arguments, choose names that match
 // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
@@ -21,16 +21,17 @@ private const val ARG_PARAM2 = "param2"
 
 /**
  * A simple [Fragment] subclass.
- * Use the [FirstFragment.newInstance] factory method to
+ * Use the [OverviewFragment.newInstance] factory method to
  * create an instance of this fragment.
  */
-class FirstFragment : Fragment() {
+class OverviewFragment : Fragment() {
     // TODO: Rename and change types of parameters
     private var param1: String? = null
     private var param2: String? = null
 
-    private lateinit var myViewModel: MyViewModel
-    private lateinit var myViewModelFactory: MyViewModelFactory
+    private val viewModel : OverviewViewModel by lazy {
+        ViewModelProviders.of(this).get(OverviewViewModel::class.java)
+    }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -45,50 +46,29 @@ class FirstFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View? {
         // Inflate the layout for this fragment
-        val binding = DataBindingUtil.inflate<FragmentFirstBinding>(inflater,R.layout.fragment_first,container,false)
+        val binding = DataBindingUtil.inflate<FragmentOverviewBinding>(inflater,R.layout.fragment_overview, container, false)
 
-        myViewModelFactory =
-            MyViewModelFactory(
-                15
-            )
-        Log.i("myTag","Initialize view model")
-        myViewModel = ViewModelProviders.of(this,myViewModelFactory).get(MyViewModel::class.java)
-
-        binding.myViewModel = myViewModel
         binding.lifecycleOwner = this
 
-        val myTimer =
-            MyTimer(this.lifecycle)
-        myTimer.startTimer()
+        binding.overviewViewModel = viewModel
 
-//        myViewModel.currentTime.observe(this, Observer { currentTime->
-//            binding.timer.text = currentTime
-//        })
-//
-//        myViewModel.score.observe(this, Observer { newScore->
-//            binding.hello.text = newScore.toString()
-//        })
-
-
-        binding.next.setOnClickListener {
-            view!!.findNavController().navigate(FirstFragmentDirections.actionFirstFragmentToSecondFragment())
-        }
         return binding.root
     }
 
     companion object {
+
         /**
          * Use this factory method to create a new instance of
          * this fragment using the provided parameters.
          *
          * @param param1 Parameter 1.
          * @param param2 Parameter 2.
-         * @return A new instance of fragment FirstFragment.
+         * @return A new instance of fragment OverviewFragment.
          */
         // TODO: Rename and change types and number of parameters
         @JvmStatic
         fun newInstance(param1: String, param2: String) =
-            FirstFragment().apply {
+            OverviewFragment().apply {
                 arguments = Bundle().apply {
                     putString(ARG_PARAM1, param1)
                     putString(ARG_PARAM2, param2)

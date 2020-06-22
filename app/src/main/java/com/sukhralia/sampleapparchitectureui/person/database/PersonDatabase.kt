@@ -1,4 +1,4 @@
-package com.sukhralia.sampleapparchitectureui.database
+package com.sukhralia.sampleapparchitectureui.person.database
 
 import android.content.Context
 import androidx.room.Database

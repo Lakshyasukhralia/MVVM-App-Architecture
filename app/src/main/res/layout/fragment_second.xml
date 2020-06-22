@@ -6,13 +6,13 @@
     <data>
         <variable
             name="personViewModel"
-            type="com.sukhralia.sampleapparchitectureui.viewmodels.PersonViewModel" />
+            type="com.sukhralia.sampleapparchitectureui.person.viewmodels.PersonViewModel" />
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        tools:context=".SecondFragment">
+        tools:context=".person.SecondFragment">
 
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/list"

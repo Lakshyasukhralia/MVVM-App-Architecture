@@ -6,13 +6,13 @@
     <data>
         <variable
             name="myViewModel"
-            type="com.sukhralia.sampleapparchitectureui.viewmodels.MyViewModel" />
+            type="com.sukhralia.sampleapparchitectureui.person.viewmodels.MyViewModel" />
     </data>
 
 <androidx.constraintlayout.widget.ConstraintLayout
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".FirstFragment">
+    tools:context=".person.FirstFragment">
 
     <!-- TODO: Update blank fragment layout -->
     <TextView
@@ -53,6 +53,20 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/hello" />
+
+    <Button
+        android:id="@+id/mars"
+        style="@style/SampleStyle1"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="50dp"
+        android:layout_marginTop="15dp"
+        android:layout_marginEnd="50dp"
+        android:text="Mars Activity"
+        android:textAllCaps="false"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/next" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>

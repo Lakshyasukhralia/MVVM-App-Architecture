@@ -1,4 +1,4 @@
-package com.sukhralia.sampleapparchitectureui.adapters
+package com.sukhralia.sampleapparchitectureui.person.adapters
 
 import android.content.Context
 import android.view.LayoutInflater
@@ -7,7 +7,7 @@ import android.view.ViewGroup
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.sukhralia.sampleapparchitectureui.R
-import com.sukhralia.sampleapparchitectureui.database.Person
+import com.sukhralia.sampleapparchitectureui.person.database.Person
 
 class PersonAdapter : RecyclerView.Adapter<ViewHolder>() {
 

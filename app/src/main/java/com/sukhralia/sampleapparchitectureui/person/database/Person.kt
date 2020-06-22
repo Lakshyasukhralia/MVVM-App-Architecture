@@ -1,4 +1,4 @@
-package com.sukhralia.sampleapparchitectureui.database
+package com.sukhralia.sampleapparchitectureui.person.database
 
 import androidx.room.ColumnInfo
 import androidx.room.Entity

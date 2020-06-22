@@ -1,25 +1,21 @@
-package com.sukhralia.sampleapparchitectureui
+package com.sukhralia.sampleapparchitectureui.person
 
-import android.content.Context
 import android.os.Bundle
 import android.util.Log
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.LinearLayout
 import androidx.databinding.DataBindingUtil
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProviders
 import androidx.recyclerview.widget.LinearLayoutManager
-import com.sukhralia.sampleapparchitectureui.adapters.PersonAdapter
-import com.sukhralia.sampleapparchitectureui.database.Person
-import com.sukhralia.sampleapparchitectureui.database.PersonDatabase
+import com.sukhralia.sampleapparchitectureui.R
+import com.sukhralia.sampleapparchitectureui.person.adapters.PersonAdapter
+import com.sukhralia.sampleapparchitectureui.person.database.PersonDatabase
 import com.sukhralia.sampleapparchitectureui.databinding.FragmentSecondBinding
-import com.sukhralia.sampleapparchitectureui.viewmodels.MyViewModel
-import com.sukhralia.sampleapparchitectureui.viewmodels.MyViewModelFactory
-import com.sukhralia.sampleapparchitectureui.viewmodels.PersonViewModel
-import com.sukhralia.sampleapparchitectureui.viewmodels.PersonViewModelFactory
+import com.sukhralia.sampleapparchitectureui.person.viewmodels.PersonViewModel
+import com.sukhralia.sampleapparchitectureui.person.viewmodels.PersonViewModelFactory
 
 // TODO: Rename parameter arguments, choose names that match
 // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
@@ -52,7 +48,8 @@ class SecondFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View? {
         // Inflate the layout for this fragment
-        binding = DataBindingUtil.inflate(inflater,R.layout.fragment_second,container,false)
+        binding = DataBindingUtil.inflate(inflater,
+            R.layout.fragment_second,container,false)
 
         val application = requireNotNull(this.activity).application
 
@@ -60,7 +57,7 @@ class SecondFragment : Fragment() {
 
         val personViewModelFactory =
             PersonViewModelFactory(
-                dataSource,application
+                dataSource, application
             )
         Log.i("myTag","Initialized person view model")
         personViewModel = ViewModelProviders.of(this,personViewModelFactory).get(PersonViewModel::class.java)

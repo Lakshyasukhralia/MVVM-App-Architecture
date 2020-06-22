@@ -1,4 +1,4 @@
-package com.sukhralia.sampleapparchitectureui.viewmodels
+package com.sukhralia.sampleapparchitectureui.person.viewmodels
 
 import android.os.CountDownTimer
 import android.text.format.DateUtils

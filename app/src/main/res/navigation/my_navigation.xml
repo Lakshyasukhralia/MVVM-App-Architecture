@@ -7,7 +7,7 @@
 
     <fragment
         android:id="@+id/firstFragment"
-        android:name="com.sukhralia.sampleapparchitectureui.FirstFragment"
+        android:name="com.sukhralia.sampleapparchitectureui.person.FirstFragment"
         android:label="fragment_first"
         tools:layout="@layout/fragment_first" >
         <action
@@ -16,7 +16,7 @@
     </fragment>
     <fragment
         android:id="@+id/secondFragment"
-        android:name="com.sukhralia.sampleapparchitectureui.SecondFragment"
+        android:name="com.sukhralia.sampleapparchitectureui.person.SecondFragment"
         android:label="fragment_second"
         tools:layout="@layout/fragment_second" />
 </navigation>
