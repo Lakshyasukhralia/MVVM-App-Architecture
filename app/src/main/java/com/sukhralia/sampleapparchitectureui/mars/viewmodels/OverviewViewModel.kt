@@ -32,19 +32,21 @@ class OverviewViewModel : ViewModel(){
     private fun getMarsRealEstateProperties(){
 
         coroutineScope.launch {
-
-            var getPropertiesDeferred = MarsApi.retrofitService.getProperties()
-
-            try {
-                var listResult = getPropertiesDeferred.await()
-                _response.value = "Properties retrieved = ${listResult.size}"
-                _sampleProperty.value = listResult[0]
-            }catch (t : Throwable){
-                _response.value = "Failure = ${t.message}"
-            }
-
+            getResult()
         }
 
+    }
+
+    private suspend fun getResult(){
+        var getPropertiesDeferred = MarsApi.retrofitService.getProperties()
+
+        try {
+            var listResult = getPropertiesDeferred.await()
+            _response.value = "Properties retrieved = ${listResult.size}"
+            _sampleProperty.value = listResult[0]
+        }catch (t : Throwable){
+            _response.value = "Failure = ${t.message}"
+        }
     }
 
     override fun onCleared() {
