@@ -11,6 +11,10 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
+        <service
+            android:name=".work.services.MyIntentService"
+            android:exported="false"></service>
+
         <activity android:name=".work.WorkActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -18,8 +22,7 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".person.MainActivity">
-        </activity>
+        <activity android:name=".person.MainActivity"></activity>
         <activity android:name=".mars.MarsActivity" />
     </application>
 
